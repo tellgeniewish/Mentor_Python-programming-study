@@ -1,7 +1,9 @@
-def who_is_pass(scores):
-    for i in range(scores):
-        if scores[i] >= 60:
-            print(i + 1, end=' ')
+def initials(s):
+    words = s.split()
+    result = ''
+    for w in words:
+        result += w[0].upper()
+    return result
 
-scores = list(map(int, input().split()))
-who_is_pass(scores)
+s = input()
+print(initials(s))
