@@ -124,6 +124,7 @@ with open("even.txt", "w") as f:
 
 # 7. `student.txt` 파일에는 각 학생의 이름과 점수가 한 줄에 하나씩 저장되어 있다.
 # 이 파일을 읽어서 **가장 높은 점수를 받은 학생**과 **전체 평균 점수**를 구하시오.
+# (만점은 100점이고, 가장 낮은 점수는 0점이다.)
 
 # 다음은 `student.txt` 파일
 
@@ -139,6 +140,7 @@ with open("even.txt", "w") as f:
 
 # ```python
 # 우등생은 Cat입니다.
+# 열등생은 Dil입니다.
 # 평균은 70.0점입니다.
 # ```
 
@@ -146,7 +148,9 @@ with open("even.txt", "w") as f:
 file = open('student.txt', 'r')
 
 max_score = 0
+min_score = 100
 top_student = ''
+bottum_student = ''
 total_score = 0
 count = 0
 
@@ -157,14 +161,20 @@ for line in file:
     total_score += score
     count += 1
 
-    if score > max_score:
+    if max_score < score:
         max_score = score
         top_student = name
+
+    if score < min_score:
+        min_score = score
+        bottum_student = name
+
 
 file.close()
 
 average = total_score / count
 
 print("우등생은 %s입니다." % top_student)
+print("열등생은 %s입니다." % bottum_student)
 print("평균은 %.1f점입니다." % average)
 # ```

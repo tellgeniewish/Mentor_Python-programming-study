@@ -1,25 +1,32 @@
-n = int(input())
+file = open('student.txt', 'r')
 
-if n == 0:
-    pos_str = "zero이고"
-    is_prime = False
-else: 
-    if n % 2 == 1:
-        pos_str = " 홀수이고"
-    elif n % 2 == 0:
-        pos_str = " 짝수이고"
+max_score = 0
+min_score = 100
+top_student = ''
+bottum_student = ''
+total_score = 0
+count = 0
 
-    is_prime = True
-    if n < 2:
-        is_prime = False
-    else:
-        for i in range(2, n):
-            if n % i == 0:
-                is_prime = False
-                break
+for line in file:
+    name, score = line.split()
+    score = int(score)
 
-if is_prime == True:
-    prime_str = "prime입니다."
-else: prime_str = "prime이 아닙니다."
+    total_score += score
+    count += 1
 
-print("%d은 %s %s" % (n, pos_str, prime_str))
+    if max_score < score:
+        max_score = score
+        top_student = name
+
+    if score < min_score:
+        min_score = score
+        bottum_student = name
+
+
+file.close()
+
+average = total_score / count
+
+print("우등생은 %s입니다." % top_student)
+print("열등생은 %s입니다." % bottum_student)
+print("평균은 %.1f점입니다." % average)
