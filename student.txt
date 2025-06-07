@@ -1,5 +1,2 @@
-Alice 70  
-Bob 60  
-Cat 90  
-Dil 50  
-Dobby 80
+학생: genie, 총점: 170, 결과: 합격
+학생: alex, 총점: 150, 결과: 불합격

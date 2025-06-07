@@ -1,32 +1,21 @@
-file = open('student.txt', 'r')
+class Student:
+    def __init__(self, name, mid_score, final_score):
+        self.name = name
+        self.mid_score = mid_score
+        self.final_score = final_score
 
-max_score = 0
-min_score = 100
-top_student = ''
-bottum_student = ''
-total_score = 0
-count = 0
+    def get_total(self):
+        return self.mid_score + self.final_score
 
-for line in file:
-    name, score = line.split()
-    score = int(score)
+    def check_pass(self):
+        total = self.get_total()
+        if 160 <= total:
+            result = "합격"
+        else: result = "불합격"
+        print("학생: %s, 총점: %d, 결과: %s" % (self.name, total, result))
 
-    total_score += score
-    count += 1
+st1 = Student("genie", 90, 80)
+st2 = Student("alex", 80, 70)
 
-    if max_score < score:
-        max_score = score
-        top_student = name
-
-    if score < min_score:
-        min_score = score
-        bottum_student = name
-
-
-file.close()
-
-average = total_score / count
-
-print("우등생은 %s입니다." % top_student)
-print("열등생은 %s입니다." % bottum_student)
-print("평균은 %.1f점입니다." % average)
+st1.check_pass()
+st2.check_pass()
